@@ -7,7 +7,6 @@ DECLARE @_Result	BIT,
 BEGIN
 	SELECT * FROM TblContinentes
 END
-EXEC SPObtenerContinentes
 
 /*
 	AUTOR: Miguel Gongora
@@ -219,6 +218,30 @@ END
 
 
 
+/*
+	AUTOR: Miguel Gongora
+	FECHA: 12/11/2020
+*/
+--SP PARA Obtener Paises por Continente
+CREATE PROCEDURE SPGetCountriesByContinent	(
+												@_IdContinent TINYINT
+											)
+AS
+BEGIN
+	SELECT 
+			IdPais,
+			TxtPais,
+			TxtCapital,
+			IntAnioIndependencia,
+			IntPoblacion,
+			TxtPresidenteActual,
+			TxtMoneda,
+			TxtIdiomaOficial
+	FROM TblPaises
+	WHERE	IdContinente = @_IdContinent
+	AND		IntEstado = 1
+	ORDER BY TxtPais
+END
 
 
 
