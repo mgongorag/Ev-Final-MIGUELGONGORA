@@ -1,0 +1,6 @@
+INSERT INTO TblContinentes VALUES (1, 'América', GETDATE(), 1)
+INSERT INTO TblContinentes VALUES (2, 'Asia', GETDATE(), 1)
+INSERT INTO TblContinentes VALUES (3, 'Europa', GETDATE(), 1)
+INSERT INTO TblContinentes VALUES (4, 'Oceanía', GETDATE(), 1)
+INSERT INTO TblContinentes VALUES (5, 'Africa', GETDATE(), 1)
+INSERT INTO TblContinentes VALUES (6, 'Antártida', GETDATE(), 1)
