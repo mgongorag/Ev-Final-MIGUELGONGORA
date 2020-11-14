@@ -7,14 +7,16 @@ namespace api_rest.Entities
 {
     public class Country
     {
-        private int id { get; set; }
-        private string country { get; set; }
-        private string capital { get; set; }
-        private int population { set; get; }
-        private string president { get; set; }
-        private string language { get; set; }
-        private string coin { get; set; }
-        private string dateOfAdmission { get; set; }
+        public int id { get; set; }
+        public int idContinent { get; set; }
+        public string country { get; set; }
+        public string capital { get; set; }
+        public int population { set; get; }
+        public int yearOfIndependence { get; set; }
+        public string president { get; set; }
+        public string language { get; set; }
+        public string coin { get; set; }
+        public string dateOfAdmission { get; set; }
 
     }
 }
