@@ -243,6 +243,22 @@ BEGIN
 	ORDER BY TxtPais
 END
 
+CREATE PROCEDURE SPGetAllCountries
+AS
+BEGIN
+	SELECT 
+			IdPais,
+			TxtPais,
+			TxtCapital,
+			IntAnioIndependencia,
+			IntPoblacion,
+			TxtPresidenteActual,
+			TxtMoneda,
+			TxtIdiomaOficial
+	FROM TblPaises
+	ORDER BY TxtPais
+END
+
 
 
 
