@@ -1,13 +1,11 @@
 --SP PARA OBTENER LOS Continentes
-CREATE PROCEDURE SPObtenerContinentes
+CREATE PROCEDURE SPGetContinents
 AS
-DECLARE @_Result	BIT,
-		@_Message	NVARCHAR(100);
-
 BEGIN
-	SELECT * FROM TblContinentes
+	SELECT * 
+	FROM tblContinentes
+	WHERE intEstado = 1
 END
-
 /*
 	AUTOR: Miguel Gongora
 	FECHA: 12/11/2020
@@ -243,6 +241,27 @@ BEGIN
 	ORDER BY TxtPais
 END
 
+
+CREATE PROCEDURE SPGetCountryById	(
+												@_IdCountry TINYINT
+											)
+AS
+BEGIN
+	SELECT 
+			IdPais,
+			TxtPais,
+			TxtCapital,
+			IntAnioIndependencia,
+			IntPoblacion,
+			TxtPresidenteActual,
+			TxtMoneda,
+			TxtIdiomaOficial
+	FROM TblPaises
+	WHERE	IdPais = @_IdCountry
+	AND		IntEstado = 1;
+END
+
+
 CREATE PROCEDURE SPGetAllCountries
 AS
 BEGIN
@@ -256,6 +275,7 @@ BEGIN
 			TxtMoneda,
 			TxtIdiomaOficial
 	FROM TblPaises
+	WHERE IntEstado = 1
 	ORDER BY TxtPais
 END
 
