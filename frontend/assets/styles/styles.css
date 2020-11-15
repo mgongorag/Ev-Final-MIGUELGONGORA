@@ -1,0 +1,32 @@
+.america{
+    width: 400px;
+    filter: invert(20%) sepia(56%) saturate(4000%);
+   position: relative;
+   left: -280px;
+}
+
+.europa{
+    width: 200px;
+    filter: invert(20%) sepia(56%) saturate(4000%);
+    position: absolute;
+    top: 220px;
+    right: 500px;
+}
+
+.asia {
+    width: 310px;
+    filter: invert(20%) sepia(16%) saturate(4000%);
+    position: absolute;
+    top: 260px;
+    right: 200px;
+}
+
+
+.africa {
+    width: 190px;
+    filter: invert(20%) sepia(79%) saturate(100%);
+    position: absolute;
+    top: 440px;
+    right: 500px;
+}
+
