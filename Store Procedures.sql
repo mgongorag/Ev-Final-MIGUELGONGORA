@@ -1,8 +1,9 @@
 --SP PARA OBTENER LOS Continentes
+SELECT * FROM TblContinentes
 CREATE PROCEDURE SPGetContinents
 AS
 BEGIN
-	SELECT * 
+	SELECT IdContinente, TxtContinente
 	FROM tblContinentes
 	WHERE intEstado = 1
 END
@@ -11,7 +12,8 @@ END
 	FECHA: 12/11/2020
 */
 --SP PARA AGREGAR PAIS A CONTINENTE
-CREATE  PROCEDURE SPAddCountries (
+SELECT * FROM TblPaises
+CREATE  PROCEDURE SPAddCountry (
 									@_IdContinente			TINYINT,
 									@_TxtPais				NVARCHAR(100),
 									@_TxtCapital			NVARCHAR(100),
@@ -89,7 +91,6 @@ BEGIN
 						ROLLBACK;
 			END
 END
-
 
 /*
 	AUTOR: Miguel Gongora
@@ -227,20 +228,21 @@ CREATE PROCEDURE SPGetCountriesByContinent	(
 AS
 BEGIN
 	SELECT 
-			IdPais,
-			TxtPais,
-			TxtCapital,
-			IntAnioIndependencia,
-			IntPoblacion,
-			TxtPresidenteActual,
-			TxtMoneda,
-			TxtIdiomaOficial
-	FROM TblPaises
-	WHERE	IdContinente = @_IdContinent
-	AND		IntEstado = 1
-	ORDER BY TxtPais
+			p.IdPais,
+			p.TxtPais,
+			p.TxtCapital,
+			p.IntAnioIndependencia,
+			p.IntPoblacion,
+			p.TxtPresidenteActual,
+			p.TxtMoneda,
+			p.TxtIdiomaOficial
+	FROM TblPaises p
+	INNER JOIN TblContinentes c
+	ON  p.IdContinente = c.IdContinente
+	WHERE	c.IdContinente = @_IdContinent
+	AND		p.IntEstado = 1
+	ORDER BY p.TxtPais
 END
-
 
 CREATE PROCEDURE SPGetCountryById	(
 												@_IdCountry TINYINT
@@ -248,6 +250,7 @@ CREATE PROCEDURE SPGetCountryById	(
 AS
 BEGIN
 	SELECT 
+			IdContinente,
 			IdPais,
 			TxtPais,
 			TxtCapital,
@@ -276,10 +279,11 @@ BEGIN
 			TxtIdiomaOficial
 	FROM TblPaises
 	WHERE IntEstado = 1
-	ORDER BY TxtPais
+	ORDER BY IdPais
 END
 
 
+SELECT * FROM TblContinentes;
 
 
 

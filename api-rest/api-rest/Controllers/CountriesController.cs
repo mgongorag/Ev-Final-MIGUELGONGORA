@@ -19,15 +19,22 @@ namespace api_rest.Controllers
             return Data.DataCountry.getCountries();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/getCountryById")]
         public DataTable getCountryById(Country country)
         {
             return Data.DataCountry.getCountry(country);
         }
 
+        [HttpPost]
+        [Route("api/getCountryByContinent")]
+        public DataTable getCountriesByContinent(Country country)
+        {
+            return Data.DataCountry.getCountryByContinent(country);
+        }
 
-        [HttpPut]
+
+        [HttpPost]
         [Route("api/updateCountry")]
         public DataTable updateCountry(Country country)
         {
@@ -39,6 +46,13 @@ namespace api_rest.Controllers
         public DataTable addCountry(Country country)
         {
             return Data.DataCountry.addCountry(country);
+        }
+
+        [HttpPost]
+        [Route("api/deleteCountry")]
+        public DataTable deleteCountry(Country country)
+        {
+            return Data.DataCountry.deleteCountry(country);
         }
 
     }

@@ -4,15 +4,16 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace api_rest.Data
 {
     public class Connection
     {
-        private static string user = "sa";
-        private static string password = "admin";
-        private static string server = "GODLIKE";
-        private static string database = "BDExFinal";
+        private static string user = WebConfigurationManager.AppSettings["user"].ToString();
+        private static string password = WebConfigurationManager.AppSettings["password"].ToString();
+        private static string server = WebConfigurationManager.AppSettings["server"].ToString();
+        private static string database = WebConfigurationManager.AppSettings["database"].ToString();
 
         public static string getConnectionString()
         {

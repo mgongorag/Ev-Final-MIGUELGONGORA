@@ -30,6 +30,25 @@ namespace api_rest.Data
             return dt;
         }
 
+
+        public static DataTable deleteCountry(Country country)
+        {
+            dt.Clear();
+            SqlCommand command = Connection.createCommandSP("SPDeleteCountry");
+            command.Parameters.AddWithValue("@_IdCountry", country.id);
+            dt = Connection.execCommandSelect(command);
+            return dt;
+        }
+
+        public static DataTable getCountryByContinent(Country country)
+        {
+            dt.Clear();
+            SqlCommand command = Connection.createCommandSP("SPGetCountriesByContinent");
+            command.Parameters.AddWithValue("@_IdContinent", country.idContinent);
+            dt = Connection.execCommandSelect(command);
+            return dt;
+        }
+
         public static DataTable updateCountry(Country country)
         {
             dt.Clear();

@@ -21,17 +21,17 @@
      
      
     <!-- MAP -->
-    <div class="container">
+    <div class="container" id="clicprueba">
         <div id="display-map" class="display-demo-map">
         <!-- CSSMap - Continents -->
         <div id="map-continents">
             <ul class="continents">
-                <li class="c1"><a href="#africa">Africa</a></li>
-                <li class="c2"><a href="#asia">Asia</a></li>
-                <li class="c3"><a href="#australia">Australia</a></li>
-                <li class="c4"><a href="#europe">Europe</a></li>
-                <li class="c5"><a href="#north-america">North America</a></li>
-                <li class="c6"><a href="#south-america">South America</a></li>
+                <li onmousedown="getCountries(5, 'Africa')" class="c1"><a href="#africa" rel="nofollow">Africa</a></li>
+                <li onmousedown="getCountries(6, 'Asia')" class="c2"><a rel="nofollow" href="#asia">Asia</a></li>
+                <li onmousedown="getCountries(4, 'Oceania')" class="c3"><a rel="nofollow" href="#australia">Oceania</a></li>
+                <li onmousedown="getCountries(3, 'Europa')" class="c4"><a rel="nofollow" href="#europe">Europe</a></li>
+                <li onmousedown="getCountries(1, 'Norte America')" class="c5"><a rel="nofollow" href="#north-america">Norte América</a></li>
+                <li onmousedown="getCountries(2, 'America del Sur')" class="c6"><a rel="nofollow" href="#south-america">América del Sur</a></li>
             </ul>
         </div> <!-- END OF THE CSSMap - Continents -->
         <div id="demo-form-fields" class="demo-form-fields">
@@ -42,7 +42,7 @@
         </div>
         <div id="demo-agents" class="demo-agents-list wrapper">
             <ul>
-                <li id="africa"><h3>Africa</h3</li>
+                <li id="africa"><h3>Africa</h3></li>
                 <li id="asia"><h3>Asia</h3></li>
                 <li id="australia"><h3>Australia</h3></li>
                 <li id="europe"><h3>Europe</h3></li>
@@ -85,51 +85,117 @@
             </div>
         </div>           
     </div>
+    <div class="modal fade p-1" id="formModal" tabindex="-1" aria-labelledby="formModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-dark">
+              <h5 class="modal-title m-0 text-white" id="formModal">Agregar un nuevo Pais</h5>
+              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="form-agregarPais">
+                <div class="form-group  d-none">
+                  <label for="Continente" class="col-form-label">IdPais</label>
+                  <input type="text" id="idPais" disabled class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="Continente" class="col-form-label">Continente</label>
+                  <select name="continentes" id="ddlContinentes" class="form-control">
+                      <option value="1" disabled>Elija una opcion</option>
+                      <option value="2">Elija una opcion</option>
+                  </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="pais" class="col-form-label">Pais</label>
+                        <input type="text" id="pais" class="form-control" placeholder="Ingrese el nombre del país" >
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="pais" class="col-form-label">Capital</label>
+                        <input type="text" id="capital" class="form-control" placeholder="Ingrese el nombre de la capital" >
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="idioma"  class="col-form-label">Idioma</label>
+                        <input type="text" id="idioma" class="form-control" placeholder="Ingrese el idioma oficial" >
+                    </div>
+                    <div class="form-group col-3">
+                         <label for="Independencia" class="col-form-label">Independencia</label>
+                        <input type="number" id="independencia" class="form-control" placeholder="Año de la Independencia" >
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="poblacion" class="col-form-label">Población</label>
+                        <input type="number" id="poblacion"    class="form-control" placeholder="Ingrese la población" >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="presidente" class="col-form-label">Presidente</label>
+                        <input type="text"  id="presidente" class="form-control" placeholder="Ingrese nombre del Presidente" >
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="moneda" class="col-form-label">Moneda</label>
+                        <input type="text" id="moneda" class="form-control" placeholder="Ingrese la moneda" >
+                    </div>
+                </div>
+
+                <div id="alertModal" class="d-none alert" role="alert">
+                   
+                </div> 
+
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnCancelar" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="btnGuardar" onclick="addCountry()" class="btn btn-primary">Guardar</button>
+              <button type="button" id="btnActualizar" onclick="updateCountry()" class="btn btn-success">Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <div class="tabla container card card-body">
         <div class="container-encabezado">
             <div class="texto-encabezado">
                 <h5 class="text-primary m-0  align-middle">Continente: </h5>
-                <h5 class="ml-2 text-white font-weight-bold m-0 align-middle badge badge-primary">America del Norte</h5> 
+                <h5 class="ml-2 text-white font-weight-bold m-0 align-middle badge badge-primary" id="tituloContinente">America del Norte</h5> 
             </div>
-            <button class="btn btn-primary">+</button>
+            <button class="btn btn-primary" id="btnModalGuardar" data-toggle="modal" data-target="#formModal" >+</button>
         </div>
 
         <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th class="text-center" scope="col">País</th>
-                <th class="text-center" scope="col">Capital</th>
-                <th class="text-center" scope="col">Independencia</th>
-                <th class="text-center" scope="col">Población</th>
-                <th class="text-center" scope="col">Presidente Actual</th>
-                <th class="text-center" scope="col">Idioma Oficial</th>
-                <th class="text-center" scope="col">Moneda</th>
-                <th class="text-center" scope="1" colspan="2">Opciones</th>
+                <th class="align-middle text-center" scope="col">País</th>
+                <th class="align-middle text-center" scope="col">Capital</th>
+                <th class="align-middle text-center" scope="col">Independencia</th>
+                <th class="align-middle text-center" scope="col">Población</th>
+                <th class="align-middle text-center" scope="col">Presidente Actual</th>
+                <th class="align-middle text-center" scope="col">Idioma Oficial</th>
+                <th class="align-middle text-center" scope="col">Moneda</th>
+                <th class="align-middle text-center" scope="1" colspan="2">Opciones</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th class="text-center align-middle" scope="row">Guatemala</th>
-                <td class="text-center align-middle">Mark</td>
-                <td class="text-center align-middle">Mark</td>
-                <td class="text-center align-middle">Otto</td>
-                <td class="text-center align-middle">@mdo</td>
-                <td class="text-center align-middle">@mdo</td>
-                <td class="text-center align-middle">@mdo</td>
-                <td class="text-center align-middle"><button type="button" class="btn btn-outline-info">Editar</button></td>
-                <td class="text-center align-middle"><button type="button" class="btn btn-outline-danger">Eliminar</button></td>
-              </tr>
-        
+            <tbody id="table-body">
+             
             </tbody>
           </table>
+          <div id="alert-eliminar" class="alert d-none">
+              
+          </div>
          
     </div>
-
-       
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cssmapsplugin.com/5/jquery.cssmap.min.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
+    <script src="assets/js/main.js"></script>
     
 </body>
 </html>
