@@ -15,6 +15,6 @@
 <p>Vista Principal</p>
 <img src="https://github.com/mgongorag/Ev-Final-MIGUELGONGORA/blob/main/galeria/main.png" alt="main" width="1000px">
 <p>Agregar País</p>
-<img src="https://github.com/mgongorag/Ev-Final-MIGUELGONGORA/blob/main/galeria/addCountry.png" alt="main" width="1000px">
+<img src="https://github.com/mgongorag/Ev-Final-MIGUELGONGORA/blob/main/galeria/addCountrys.png" alt="main" width="1000px">
 <p>Actualizar País</p>
 <img src="https://github.com/mgongorag/Ev-Final-MIGUELGONGORA/blob/main/galeria/updateCountry.png" alt="main" width="1000px">
