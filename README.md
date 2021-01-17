@@ -10,3 +10,6 @@
   <li>SQL Server</li>
   <li>CSS Map Plugin</li>
 </ul>
+
+<h3>Galería</h3>
+<img src="https://github.com/mgongorag/Ev-Final-MIGUELGONGORA/blob/main/galeria/main.png" alt="main" width="500" height="600">
