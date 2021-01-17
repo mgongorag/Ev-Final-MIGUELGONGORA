@@ -1,5 +1,5 @@
 --SP PARA OBTENER LOS Continentes
-SELECT * FROM TblContinentes
+
 CREATE PROCEDURE SPGetContinents
 AS
 BEGIN
@@ -12,7 +12,6 @@ END
 	FECHA: 12/11/2020
 */
 --SP PARA AGREGAR PAIS A CONTINENTE
-SELECT * FROM TblPaises
 CREATE  PROCEDURE SPAddCountry (
 									@_IdContinente			TINYINT,
 									@_TxtPais				NVARCHAR(100),
@@ -283,7 +282,8 @@ BEGIN
 END
 
 
-SELECT * FROM TblContinentes;
+
+
 
 
 

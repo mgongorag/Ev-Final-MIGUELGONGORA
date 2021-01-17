@@ -1,5 +1,6 @@
-const url = "http://api-ef-gongora.cetcom.edu.gt/api/";
+const url = "https://api-ef-gongora.cetcom.edu.gt/api/";
 let seleccionado = '';
+
 const btnModalGuardar = document.getElementById('btnModalGuardar').addEventListener('click', () =>{
     document.getElementById('btnActualizar').classList.add('d-none')
     document.getElementById('btnGuardar').classList.remove('d-none')
